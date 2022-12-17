@@ -54,7 +54,7 @@ def main():
     words = generate_story(year)
 
     # Use Streamlit to display the random word
-    st.write("OpenAI prompted:", words)
+    st.write("OpenAI prompted: \n", words)
 
     # Add a footer
     st.markdown(
