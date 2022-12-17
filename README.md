@@ -19,7 +19,7 @@ This project needs OpenAI API key, which can be acquired at `https://beta.openai
 
 ## How to use
 ```
-1. Install docker. If you don't familiar with it, familiarize first with docker tutorial.
+1. Install docker. If you don't familiar with it, familiarize first with docker tutorial. Use docker, I don't want to hear any incompatible issues.
 2. Build with docker, docker build -t dystopia .
 3. Run with docker, docker run -e OPENAI_API_KEY dystopia
 4. The default streamlit container is 8501, however, you can specify it in docker build by bind the host and container's port. In example -p 8501:8000
