@@ -66,12 +66,12 @@ def main():
         </style>
         <div class='footer'>
             <hr>
-            <p>
+            
             Dystopia is a project to inform everyone that AI is not all about building the positive and bright future. 
             It's just the same storyteller when we asked about the pessimism.
             However this is a journey for me to know about the reason of how the AI could think like that. Training data?
             
-            By <a href="https://salmanhiro.vercel.app/">salmanhiro</a>
+            By https://salmanhiro.vercel.app/
             Created with GPT and Tensorflow
         </div>
         """,
