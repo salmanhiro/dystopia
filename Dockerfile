@@ -1,10 +1,10 @@
-FROM python:3.8
+FROM python:3.9
 
 # Install Streamlit and other dependencies
 COPY requirements.txt requirements.txt
-RUN pip install --upgrade protobuf
 RUN pip install -r requirements.txt
 
+RUN pip install protobuf~=4.21.1
 # Add the app files to the image
 ADD . /src
 

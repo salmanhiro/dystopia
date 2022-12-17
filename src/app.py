@@ -6,6 +6,7 @@ import tensorflow_hub as hub
 import numpy as np
 import tensorflow as tf
 from PIL import Image
+import random
 
 
 st.markdown("""
@@ -44,7 +45,7 @@ def generate_story(year):
     story = completion["choices"][0]["text"].strip('\n')
     return story
 
-def generate_nightmare(input_image, style_image):
+def generate_nightmare(content_image, style_image):
     content_image = np.asarray(content_image).astype(np.float32)[np.newaxis, ...] / 255.
     style_image = np.asarray(style_image).astype(np.float32)[np.newaxis, ...] / 255.
     # Optionally resize the images. It is recommended that the style image is about
@@ -62,7 +63,7 @@ st.header("Future dystopian story")
 
 
 # Use Streamlit to get the length of the random word from the user
-year = st.slider("Choose the year (from 2022 to 3000):", min_value=2025, max_value=3000, value=2025)
+year = st.slider("Choose the year (from 2022 to 3000):", min_value=2025, max_value=3000, value=2025, step=5)
 
 # Generate random word
 words = generate_story(year)
@@ -70,13 +71,18 @@ words = generate_story(year)
 # Use Streamlit to display the random word
 st.write("OpenAI prompted:", words)
 
-files = st.drag_and_drop_files("Choose an image file")
+st.header("Nightmare visualization")
 
-if files:
-    content_image = Image.open(files[0])
-    style_image = Image.open('1950670.jpg')
-    output_image = generate_nightmare(content_image, style_image)
-    st.image(output_image, caption="Generated dystopian image", use_column_width=True)
+file = st.file_uploader("Choose an image file")
+
+if file:
+    content_image = Image.open(file)
+    random_style = random.choice(os.listdir("src/styles")) #change dir name to whatever
+    style_image = Image.open(f'src/styles/{random_style}')
+    output_tensor = generate_nightmare(content_image, style_image)[0].numpy()
+    print(output_tensor.shape)
+    print(output_tensor)
+    st.image(output_tensor, caption="Generated dystopian image", use_column_width=True)
 
 
 
@@ -90,12 +96,13 @@ st.markdown(
     </style>
     <div class='footer'>
         <hr>
-        <p>Dystopia is a project to inform everyone that AI is not all about building the positive and bright future. 
+        <p>
+        Dystopia is a project to inform everyone that AI is not all about building the positive and bright future. 
         It's just the same storyteller when we asked about the pessimism.
         However this is a journey for me to know about the reason of how the AI could think like that. Training data?
         
-        </p>
-        <p>Created with GPT and Tensorflow</p>
+
+        Created with GPT and Tensorflow
     </div>
     """,
     unsafe_allow_html=True,
