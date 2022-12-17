@@ -1,5 +1,8 @@
 # Dystopia
-AI to generate dystopian scenery and narrative
+AI to generate dystopian scenery and narrative.
+
+![image](https://user-images.githubusercontent.com/29100316/208242832-acf10267-9cfa-4e08-b432-8de103574ee5.png)
+
 
 ## GPT-3 Dystopian Scenery
 
