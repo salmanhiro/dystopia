@@ -1,7 +1,5 @@
 openai
 streamlit
-tensorflow_hub
-tensorflow
-numpy
-Pillow
+
+
 
