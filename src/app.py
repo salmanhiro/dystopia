@@ -8,6 +8,7 @@ import tensorflow as tf
 from PIL import Image
 import random
 
+os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
 st.markdown("""
   <style>
@@ -80,8 +81,6 @@ if file:
     random_style = random.choice(os.listdir("src/styles")) #change dir name to whatever
     style_image = Image.open(f'src/styles/{random_style}')
     output_tensor = generate_nightmare(content_image, style_image)[0].numpy()
-    print(output_tensor.shape)
-    print(output_tensor)
     st.image(output_tensor, caption="Generated dystopian image", use_column_width=True)
 
 
@@ -101,7 +100,7 @@ st.markdown(
         It's just the same storyteller when we asked about the pessimism.
         However this is a journey for me to know about the reason of how the AI could think like that. Training data?
         
-
+        By <a href="https://salmanhiro.vercel.app/">salmanhiro</a>
         Created with GPT and Tensorflow
     </div>
     """,
