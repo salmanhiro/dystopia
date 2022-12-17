@@ -12,4 +12,4 @@ WORKDIR /src
 EXPOSE 8501
 
 # Run the app
-CMD streamlit run src/app.py
+CMD ["streamlit", "run", "src/app.py"]
